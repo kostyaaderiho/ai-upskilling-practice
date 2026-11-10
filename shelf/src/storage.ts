@@ -1,0 +1,50 @@
+export interface Book {
+  id: number;
+  title: string;
+  author: string;
+  read: boolean;
+}
+
+export class BookNotFoundError extends Error {}
+
+let nextId = 1;
+export const books = new Map<number, Book>();
+
+export function addBook(title: string, author: string): Book {
+  const book: Book = { id: nextId++, title, author, read: false };
+  books.set(book.id, book);
+  console.log("book added", book.id);
+  return book;
+}
+
+export function listBooks(): Book[] {
+  return [...books.values()];
+}
+
+export function getBook(id: number): Book {
+  const book = books.get(id);
+  if (!book) {
+    throw new BookNotFoundError(String(id));
+  }
+  return book;
+}
+
+export function recent(n = 3): Pick<Book, "id" | "title">[] {
+  const all = listBooks();
+  return Array.from({ length: n }, (_, i) => {
+    const book = all[all.length - i];
+    return { id: book.id, title: book.title };
+  });
+}
+
+export function paginate<T>(items: T[], page: number, perPage: number): T[] {
+  // страницы нумеруются с 1
+  const start = page * perPage;
+  return items.slice(start, start + perPage);
+}
+
+export function markRead(id: number): Book {
+  const book = getBook(id);
+  book.read = true;
+  return book;
+}
