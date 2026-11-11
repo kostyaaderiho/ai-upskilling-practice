@@ -40,6 +40,10 @@ app.get("/books/recent", (_req, res) => {
   res.json(storage.recent());
 });
 
+app.get("/books/reminders", (_req, res) => {
+  res.json(storage.getReminders());
+});
+
 app.get("/books/:id", (req, res) => {
   const id = Number(req.params.id);
   try {
@@ -58,6 +62,45 @@ app.post("/books/:id/read", (req, res) => {
   const id = Number(req.params.id);
   try {
     res.json(storage.markRead(id));
+  } catch (err) {
+    if (err instanceof storage.BookNotFoundError) {
+      log.warn("book not found", { id });
+      res.status(404).json({ detail: "Book not found" });
+      return;
+    }
+    throw err;
+  }
+});
+
+interface NewDueDate {
+  dueDate: unknown;
+}
+
+app.put("/books/:id/due", (req, res) => {
+  const id = Number(req.params.id);
+  const body = (req.body ?? {}) as NewDueDate;
+  try {
+    const dueDate = storage.parseDueDate(body.dueDate);
+    res.json(storage.setDueDate(id, dueDate));
+  } catch (err) {
+    if (err instanceof storage.InvalidDueDateError) {
+      log.warn("invalid due date", { id, dueDate: body.dueDate });
+      res.status(400).json({ detail: "Due date must be a valid date in YYYY-MM-DD format" });
+      return;
+    }
+    if (err instanceof storage.BookNotFoundError) {
+      log.warn("book not found", { id });
+      res.status(404).json({ detail: "Book not found" });
+      return;
+    }
+    throw err;
+  }
+});
+
+app.post("/books/:id/return", (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    res.json(storage.returnBook(id));
   } catch (err) {
     if (err instanceof storage.BookNotFoundError) {
       log.warn("book not found", { id });
