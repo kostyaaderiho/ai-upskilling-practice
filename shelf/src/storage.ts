@@ -1,3 +1,7 @@
+import { getLogger } from "./log";
+
+const log = getLogger("storage");
+
 export interface Book {
   id: number;
   title: string;
@@ -13,7 +17,7 @@ export const books = new Map<number, Book>();
 export function addBook(title: string, author: string): Book {
   const book: Book = { id: nextId++, title, author, read: false };
   books.set(book.id, book);
-  console.log("book added", book.id);
+  log.info("book added", { id: book.id });
   return book;
 }
 
