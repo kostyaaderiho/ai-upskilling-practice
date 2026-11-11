@@ -50,6 +50,13 @@ export function paginate<T>(items: T[], page: number, perPage: number): T[] {
   return items.slice(start, start + perPage);
 }
 
+export function deleteBook(id: number): Book {
+  const book = getBook(id);
+  books.delete(id);
+  log.info("book deleted", { id });
+  return book;
+}
+
 export function markRead(id: number): Book {
   const book = getBook(id);
   book.read = true;

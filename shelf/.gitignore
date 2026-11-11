@@ -3,3 +3,4 @@ node_modules/
 .tmp/
 CLAUDE.local.md
 .claude/settings.local.json
+docs/codemie

@@ -40,10 +40,38 @@ app.get("/books/recent", (_req, res) => {
   res.json(storage.recent());
 });
 
+app.get("/books/:id", (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    res.json(storage.getBook(id));
+  } catch (err) {
+    if (err instanceof storage.BookNotFoundError) {
+      log.warn("book not found", { id });
+      res.status(404).json({ detail: "Book not found" });
+      return;
+    }
+    throw err;
+  }
+});
+
 app.post("/books/:id/read", (req, res) => {
   const id = Number(req.params.id);
   try {
     res.json(storage.markRead(id));
+  } catch (err) {
+    if (err instanceof storage.BookNotFoundError) {
+      log.warn("book not found", { id });
+      res.status(404).json({ detail: "Book not found" });
+      return;
+    }
+    throw err;
+  }
+});
+
+app.delete("/books/:id", (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    res.json(storage.deleteBook(id));
   } catch (err) {
     if (err instanceof storage.BookNotFoundError) {
       log.warn("book not found", { id });
