@@ -7,13 +7,24 @@ export const app = express();
 app.use(express.json());
 
 interface NewBook {
-  title: string;
+  title: unknown;
   author: string;
 }
 
+const MAX_TITLE_LENGTH = 120;
+
 app.post("/books", (req, res) => {
   const body = req.body as NewBook;
-  res.json(storage.addBook(body.title, body.author));
+  if (typeof body.title !== "string") {
+    res.status(422).json({ detail: "Title must be a string" });
+    return;
+  }
+  const title = body.title.trim();
+  if (title.length < 1 || title.length > MAX_TITLE_LENGTH) {
+    res.status(422).json({ detail: `Title must be 1 to ${MAX_TITLE_LENGTH} characters` });
+    return;
+  }
+  res.json(storage.addBook(title, body.author));
 });
 
 app.get("/books", (req, res) => {
