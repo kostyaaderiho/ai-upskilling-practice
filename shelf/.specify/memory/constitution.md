@@ -1,50 +1,72 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version change: (unfilled template) → 1.0.0
+Modified principles: none (initial adoption)
+Added principles: I. Только localhost; II. Тесты сначала; III. Зависимости только с обоснованием;
+  IV. Единые контракты ошибок и логирования; V. Строгая типизация
+Added sections: Ограничения стека; Рабочий процесс и качество
+Removed sections: none
+Follow-up TODOs: none
+-->
+# Shelf Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Только localhost
+Приложение работает исключительно на localhost. Код приложения и тесты MUST NOT обращаться
+к внешним сервисам и MUST NOT выполнять исходящие сетевые вызовы. Хранилище — только
+in-memory `Map` в `src/storage.ts`; внешние БД, API и SaaS запрещены. Тесты проверяют
+приложение через `supertest`, не поднимая реальный сервер.
+Обоснование: личная книжная полка не должна зависеть от сети и утекать данными наружу.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Тесты сначала (NON-NEGOTIABLE)
+Порядок обязателен: сначала падающий тест в `tests/*.test.ts`, затем код, делающий его
+зелёным. Новая ручка или исправленный баг MUST сопровождаться новым тестом, который
+падал до изменения. Удалять или ослаблять тесты ради зелёного прогона MUST NOT.
+Обоснование: падающий тест доказывает, что он действительно проверяет поведение.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Зависимости только с обоснованием
+Новый пакет в `package.json` (включая dev-зависимости) MUST NOT добавляться без письменного
+обоснования (зачем нужен, почему не обойтись имеющимся) и явного согласия владельца
+проекта. Единственная рантайм-зависимость — Express 5; её расширение — отдельное решение.
+Обоснование: малая поверхность зависимостей упрощает поддержку и снижает риски.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Единые контракты ошибок и логирования
+Все ошибки API MUST возвращаться как `{ detail }` с соответствующим статус-кодом
+(400, 404 и т. д.); других форм и ошибок со статусом 200 быть не должно. Доменные ошибки —
+отдельные классы в `src/storage.ts`, роут переводит их в HTTP-статус. Логировать MUST
+только через `getLogger()` из `src/log.ts` (`info`, `warn`, `error`; контекст — полями
+объекта); `console.*` в коде приложения запрещён. Контракт существующих ручек (коды и
+формат тела) меняется только отдельным осознанным решением, не попутно с другой задачей.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Строгая типизация
+Код — TypeScript в строгом режиме и только ESM. `any` и `@ts-ignore` MUST NOT
+использоваться; публичные функции MUST иметь явный возвращаемый тип.
+`eslint.config.js` и `tsconfig.json` не ослабляются ради прохождения проверок.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Ограничения стека
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- Node.js, запуск через `tsx`; Express 5; тесты — Vitest и supertest; линт — ESLint 9
+  (flat config, `typescript-eslint` recommended).
+- Данные живут только в рамках процесса; тесты не опираются на конкретные id —
+  id берётся из ответа на создание.
+- Секреты (`.env`) не попадают в вывод, логи и коммиты.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Рабочий процесс и качество
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Задача считается готовой только после `npm run check` (tsc + eslint + vitest);
+  отчёт содержит реальный результат, а не предположение.
+- Правки ограничены текущей задачей; замеченные рядом проблемы называются в отчёте,
+  а не исправляются молча.
+- Коммит, push, merge и открытие MR выполняются только по прямой просьбе.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Конституция приоритетнее остальных практик проекта. Поправки вносятся изменением этого файла
+с указанием причины и обновлением версии; принимает их владелец проекта. Версионирование
+семантическое: MAJOR — несовместимое удаление или переопределение принципа; MINOR — новый
+принцип или раздел либо существенное расширение; PATCH — уточнения формулировок.
+Соответствие проверяется при каждом ревью и перед закрытием задачи; любое отступление MUST
+быть явно обосновано. Оперативные правила — в `CLAUDE.md`.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-11-11 | **Last Amended**: 2026-11-11
