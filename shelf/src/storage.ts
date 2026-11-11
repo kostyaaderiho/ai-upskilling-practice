@@ -7,9 +7,23 @@ export interface Book {
   title: string;
   author: string;
   read: boolean;
+  dueDate?: string;
 }
 
+export type ReminderStatus = "overdue" | "due-soon";
+
+export interface Reminder {
+  id: number;
+  title: string;
+  dueDate: string;
+  status: ReminderStatus;
+}
+
+export const REMINDER_WINDOW_DAYS = 3;
+
 export class BookNotFoundError extends Error {}
+
+export class InvalidDueDateError extends Error {}
 
 let nextId = 1;
 export const books = new Map<number, Book>();
