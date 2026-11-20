@@ -1,0 +1,632 @@
+{
+  "meta": {
+    "generatedAt": "2026-11-20T14:50:48.870Z",
+    "rangeLabel": "all",
+    "agents": [
+      "claude"
+    ],
+    "projectFilter": "all",
+    "totals": {
+      "sessions": 1,
+      "durationMs": 3883011,
+      "turns": 33,
+      "files": 8,
+      "netLines": 731,
+      "toolCallsTotal": 36,
+      "toolSuccessRate": 91.7,
+      "totalCostUSD": 1.3007176,
+      "cacheReadCostUSD": 0.33075960000000004,
+      "pricedSessions": 1
+    },
+    "unpricedModels": [],
+    "estimatedModels": [],
+    "localModels": [],
+    "coverage": [
+      {
+        "agentName": "claude",
+        "total": 1,
+        "priced": 1,
+        "withLog": 1
+      }
+    ],
+    "userEmail": "kanstantsin_adzerykha@epam.com",
+    "periodStart": "2026-11-20T13:46:02.903Z",
+    "periodEnd": "2026-11-20T14:50:45.914Z"
+  },
+  "sessions": [
+    {
+      "sessionId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+      "agentName": "claude",
+      "provider": "ai-run-sso",
+      "title": "/speckit-constitution localhost only (no external services or network calls); tests first (a failing test first, then code); no new dependencies without justification",
+      "project": "/Users/Kanstantsin_Adzerykha/Developer/workhuman/ai-upskilling-practice/module-3/shelf",
+      "branch": "main",
+      "startTime": 1795182362903,
+      "durationMs": 3883011,
+      "turns": 33,
+      "fileOps": 8,
+      "linesAdded": 740,
+      "linesRemoved": 9,
+      "linesModified": 0,
+      "netLines": 731,
+      "filesChanged": 8,
+      "filesWritten": 8,
+      "filesEdited": 1,
+      "toolCallsTotal": 36,
+      "toolCallsSuccess": 33,
+      "toolCallsFailure": 3,
+      "models": [
+        "claude-sonnet-5-5",
+        "<synthetic>"
+      ],
+      "languages": [
+        "markdown"
+      ],
+      "tools": [
+        {
+          "toolName": "Bash",
+          "totalCalls": 14,
+          "successCount": 13,
+          "failureCount": 1,
+          "successRate": 92.85714285714286
+        },
+        {
+          "toolName": "Write",
+          "totalCalls": 10,
+          "successCount": 8,
+          "failureCount": 2,
+          "successRate": 80
+        },
+        {
+          "toolName": "Edit",
+          "totalCalls": 9,
+          "successCount": 9,
+          "failureCount": 0,
+          "successRate": 100
+        },
+        {
+          "toolName": "Read",
+          "totalCalls": 3,
+          "successCount": 3,
+          "failureCount": 0,
+          "successRate": 100
+        }
+      ],
+      "tokens": {
+        "input": 76,
+        "output": 40129,
+        "cacheRead": 3307596,
+        "cacheCreation": 142129,
+        "cacheCreation1h": 142129,
+        "total": 3489930
+      },
+      "costUSD": 1.3007176,
+      "cacheReadCostUSD": 0.33075960000000004,
+      "perModelCost": [
+        {
+          "model": "claude-sonnet-5-5",
+          "tokens": {
+            "input": 76,
+            "output": 40129,
+            "cacheRead": 3307596,
+            "cacheCreation": 142129,
+            "cacheCreation1h": 142129,
+            "total": 3489930
+          },
+          "costUSD": 1.3007176,
+          "unpriced": false
+        }
+      ],
+      "hadLog": true,
+      "agentSessionFile": "/Users/Kanstantsin_Adzerykha/.claude/projects/-Users-Kanstantsin-Adzerykha-Developer-workhuman-ai-upskilling-practice-module-3-shelf/173064c3-bae3-4b09-a936-b28b1f39f4b4.jsonl",
+      "costSeries": [
+        {
+          "t": 1795182389934,
+          "cost": 0.276772,
+          "tokens": 68768
+        },
+        {
+          "t": 1795182407011,
+          "cost": 0.2971302,
+          "tokens": 140261
+        },
+        {
+          "t": 1795182413913,
+          "cost": 0.3143508,
+          "tokens": 213000
+        },
+        {
+          "t": 1795182429576,
+          "cost": 0.3447517,
+          "tokens": 287822
+        },
+        {
+          "t": 1795182577520,
+          "cost": 0.3931279,
+          "tokens": 370153
+        },
+        {
+          "t": 1795182608709,
+          "cost": 0.44627279999999997,
+          "tokens": 458965
+        },
+        {
+          "t": 1795182630332,
+          "cost": 0.49656789999999995,
+          "tokens": 550827
+        },
+        {
+          "t": 1795182638371,
+          "cost": 0.5283236,
+          "tokens": 643820
+        },
+        {
+          "t": 1795182643404,
+          "cost": 0.5484265,
+          "tokens": 737543
+        },
+        {
+          "t": 1795182690279,
+          "cost": 0.589025,
+          "tokens": 838265
+        },
+        {
+          "t": 1795182725638,
+          "cost": 0.6079223,
+          "tokens": 940047
+        },
+        {
+          "t": 1795182898430,
+          "cost": 0.6346742000000001,
+          "tokens": 1043225
+        },
+        {
+          "t": 1795182910074,
+          "cost": 0.6577887000000001,
+          "tokens": 1147534
+        },
+        {
+          "t": 1795182932409,
+          "cost": 0.6787320000000001,
+          "tokens": 1252769
+        },
+        {
+          "t": 1795182935947,
+          "cost": 0.6968607000000001,
+          "tokens": 1358580
+        },
+        {
+          "t": 1795182955498,
+          "cost": 0.7159316000000001,
+          "tokens": 1465243
+        },
+        {
+          "t": 1795182961137,
+          "cost": 0.7346208000000001,
+          "tokens": 1572432
+        },
+        {
+          "t": 1795182993487,
+          "cost": 0.7593661,
+          "tokens": 1680914
+        },
+        {
+          "t": 1795183002045,
+          "cost": 0.7800888,
+          "tokens": 1790123
+        },
+        {
+          "t": 1795183030123,
+          "cost": 0.806031,
+          "tokens": 1900944
+        },
+        {
+          "t": 1795183083005,
+          "cost": 0.8313209,
+          "tokens": 2015002
+        },
+        {
+          "t": 1795183094728,
+          "cost": 0.8479533,
+          "tokens": 2129622
+        },
+        {
+          "t": 1795183121355,
+          "cost": 0.8914553000000001,
+          "tokens": 2248659
+        },
+        {
+          "t": 1795183185492,
+          "cost": 1.0165066,
+          "tokens": 2379423
+        },
+        {
+          "t": 1795183191361,
+          "cost": 1.0752454,
+          "tokens": 2511385
+        },
+        {
+          "t": 1795183204163,
+          "cost": 1.1134245,
+          "tokens": 2645692
+        },
+        {
+          "t": 1795183209951,
+          "cost": 1.1389747000000001,
+          "tokens": 2780391
+        },
+        {
+          "t": 1795183216940,
+          "cost": 1.1615564,
+          "tokens": 2916026
+        },
+        {
+          "t": 1795183557099,
+          "cost": 1.2074257,
+          "tokens": 3057102
+        },
+        {
+          "t": 1795183570865,
+          "cost": 1.2511572,
+          "tokens": 3200733
+        },
+        {
+          "t": 1795183574223,
+          "cost": 1.2780591,
+          "tokens": 3344944
+        },
+        {
+          "t": 1795183591743,
+          "cost": 1.3007175999999998,
+          "tokens": 3489930
+        }
+      ],
+      "dispatches": [
+        {
+          "kind": "command",
+          "name": "speckit-constitution",
+          "start": 1795182377945,
+          "durationMs": 0,
+          "id": "command:869bcd33-f5dc-4f9d-9ff9-fd5788fedb91:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "model",
+          "start": 1795182384837,
+          "durationMs": 0,
+          "id": "command:de0aad32-f845-4276-b246-0faaa3136e76:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "speckit-constitution",
+          "start": 1795182385643,
+          "durationMs": 0,
+          "id": "command:464281ad-36b1-4c6c-9a8a-fd6db33b6521:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "speckit-specify",
+          "start": 1795182572417,
+          "durationMs": 0,
+          "id": "command:6dfadf34-5395-401b-bf02-e3954b6b0ad1:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "speckit-clarify",
+          "start": 1795182687808,
+          "durationMs": 0,
+          "id": "command:f41a49f1-9b2b-4be9-80dd-832acab152da:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "speckit-plan",
+          "start": 1795183077511,
+          "durationMs": 0,
+          "id": "command:312fda0c-a185-482f-a33b-772edd5e3a91:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        },
+        {
+          "kind": "command",
+          "name": "speckit-constitution",
+          "start": 1795183541511,
+          "durationMs": 0,
+          "id": "command:2a554551-2d0f-4927-9018-9aff51c1a4e4:0",
+          "ownerAgentId": "c1c482fc-39b3-4936-9ff9-fabbb96f6ceb",
+          "relationshipStatus": "root",
+          "elapsedMs": 0,
+          "status": "completed",
+          "attributionStatus": "unavailable",
+          "attributionScope": "owner-window"
+        }
+      ],
+      "costSource": "native-estimate",
+      "costBasis": "standard-api-tokens",
+      "dispatchesComplete": true,
+      "rootOwnCostUSD": 1.3007176,
+      "unlinkedCostUSD": 0,
+      "unlinkedAgentIds": [],
+      "observedEnd": 1795186245914,
+      "rootOwnTokens": {
+        "input": 76,
+        "output": 40129,
+        "cacheRead": 3307596,
+        "cacheCreation": 142129,
+        "cacheCreation1h": 142129,
+        "total": 3489930
+      },
+      "unlinkedTokens": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheCreation": 0,
+        "cacheCreation1h": 0,
+        "total": 0
+      },
+      "modelTimeline": [
+        {
+          "t": 1795182389934,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.276772,
+          "tokens": 68768
+        },
+        {
+          "t": 1795182407011,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0203582,
+          "tokens": 71493
+        },
+        {
+          "t": 1795182413913,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0172206,
+          "tokens": 72739
+        },
+        {
+          "t": 1795182429576,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0304009,
+          "tokens": 74822
+        },
+        {
+          "t": 1795182577520,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0483762,
+          "tokens": 82331
+        },
+        {
+          "t": 1795182608709,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0531449,
+          "tokens": 88812
+        },
+        {
+          "t": 1795182630332,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0502951,
+          "tokens": 91862
+        },
+        {
+          "t": 1795182638371,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0317557,
+          "tokens": 92993
+        },
+        {
+          "t": 1795182643404,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0201029,
+          "tokens": 93723
+        },
+        {
+          "t": 1795182690279,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0405985,
+          "tokens": 100722
+        },
+        {
+          "t": 1795182725638,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0188973,
+          "tokens": 101782
+        },
+        {
+          "t": 1795182898430,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0267519,
+          "tokens": 103178
+        },
+        {
+          "t": 1795182910074,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0231145,
+          "tokens": 104309
+        },
+        {
+          "t": 1795182932409,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0209433,
+          "tokens": 105235
+        },
+        {
+          "t": 1795182935947,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0181287,
+          "tokens": 105811
+        },
+        {
+          "t": 1795182955498,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0190709,
+          "tokens": 106663
+        },
+        {
+          "t": 1795182961137,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0186892,
+          "tokens": 107189
+        },
+        {
+          "t": 1795182993487,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0247453,
+          "tokens": 108482
+        },
+        {
+          "t": 1795183002045,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0207227,
+          "tokens": 109209
+        },
+        {
+          "t": 1795183030123,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0259422,
+          "tokens": 110821
+        },
+        {
+          "t": 1795183083005,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0252899,
+          "tokens": 114058
+        },
+        {
+          "t": 1795183094728,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0166324,
+          "tokens": 114620
+        },
+        {
+          "t": 1795183121355,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.043502,
+          "tokens": 119037
+        },
+        {
+          "t": 1795183185492,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.1250513,
+          "tokens": 130764
+        },
+        {
+          "t": 1795183191361,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0587388,
+          "tokens": 131962
+        },
+        {
+          "t": 1795183204163,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0381791,
+          "tokens": 134307
+        },
+        {
+          "t": 1795183209951,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0255502,
+          "tokens": 134699
+        },
+        {
+          "t": 1795183216940,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0225817,
+          "tokens": 135635
+        },
+        {
+          "t": 1795183557099,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0458693,
+          "tokens": 141076
+        },
+        {
+          "t": 1795183570865,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0437315,
+          "tokens": 143631
+        },
+        {
+          "t": 1795183574223,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0269019,
+          "tokens": 144211
+        },
+        {
+          "t": 1795183591743,
+          "model": "claude-sonnet-5-5",
+          "costUSD": 0.0226585,
+          "tokens": 144986
+        }
+      ],
+      "routedTurnsPct": 0,
+      "skillInvocations": [],
+      "agentInvocations": [],
+      "commandInvocations": [
+        {
+          "name": "speckit-constitution",
+          "totalCalls": 3,
+          "successCount": 3,
+          "failureCount": 0
+        },
+        {
+          "name": "model",
+          "totalCalls": 1,
+          "successCount": 1,
+          "failureCount": 0
+        },
+        {
+          "name": "speckit-specify",
+          "totalCalls": 1,
+          "successCount": 1,
+          "failureCount": 0
+        },
+        {
+          "name": "speckit-clarify",
+          "totalCalls": 1,
+          "successCount": 1,
+          "failureCount": 0
+        },
+        {
+          "name": "speckit-plan",
+          "totalCalls": 1,
+          "successCount": 1,
+          "failureCount": 0
+        }
+      ],
+      "sessionSource": "SpecKit"
+    }
+  ]
+}

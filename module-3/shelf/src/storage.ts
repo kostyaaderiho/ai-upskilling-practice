@@ -49,6 +49,13 @@ export function paginate<T>(items: T[], page: number, perPage: number): T[] {
   return items.slice(start, start + perPage);
 }
 
+export function deleteBook(id: number): void {
+  if (!books.delete(id)) {
+    throw new BookNotFoundError(String(id));
+  }
+  log.info("book.deleted", { id });
+}
+
 export function markRead(id: number): Book {
   const book = getBook(id);
   book.read = true;
