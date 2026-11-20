@@ -30,11 +30,13 @@ export function getBook(id: number): Book {
 }
 
 export function recent(n = 3): Pick<Book, "id" | "title">[] {
-  const all = listBooks();
-  return Array.from({ length: n }, (_, i) => {
-    const book = all[all.length - i];
-    return { id: book.id, title: book.title };
-  });
+  if (n <= 0) {
+    return [];
+  }
+  return listBooks()
+    .slice(-n)
+    .reverse()
+    .map(({ id, title }) => ({ id, title }));
 }
 
 export function paginate<T>(items: T[], page: number, perPage: number): T[] {

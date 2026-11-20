@@ -52,8 +52,31 @@ TypeScript (strict), Node.js 20+, Express 5, Vitest + supertest, ESLint.
 ## 3.2 Debugging and tests
 
 - B-1: what the tests written from the code alone checked:
+
+5 of 7 fail, and that's a real bug in the code, not in the tests. stats.ts:6 multiplies instead of dividing:
+
 - B-2: the three-part prompt:
+
+Error:
+<paste the exact TypeError and stack trace from terminal 1>
+
+Code:
+<paste the recent() function from src/storage.ts>
+
+Expected behaviour:
+Return up to three latest books, newest first. For an empty list — an empty array.
+
+Fix recent() and add tests for 0, 1 and 5 books in tests/storage.test.ts.
+
 - Hallucination: tsc error, documentation link, feedback prompt:
+
+Error:
+Error: Module '"express"' has no exported member 'validateBody'.
+
+What the documentation says:
+Express 5 has no validateBody export — https://expressjs.com/en/5x/api/
+
+Propose a solution with no new dependencies. Don't change any code yet.
 
 ## 3.3 Spec Kit
 
