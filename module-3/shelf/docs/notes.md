@@ -91,8 +91,18 @@ Propose a solution with no new dependencies. Don't change any code yet.
 ## 3.4 Agent mode
 
 - What you did in plan mode and what in agent mode:
-- When you stopped or rolled back the agent, and why:
-- Regression after pong: what broke and how you rolled it back (or "nothing broke"):
+
+ping: 5 failed of 6
+
+pong: 6 passed, tests untouched
+
+- What the checks did not catch (a regression, or something you saw in the diff):
+
+nothing broke
+
+- Plan mode, agent mode, and when you stopped or rolled back the agent:
+
+nothing broke
 
 ## 3.5 Commands, hooks, MCP
 

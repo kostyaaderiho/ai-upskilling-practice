@@ -9,14 +9,29 @@ const log = getLogger("app");
 export const app = express();
 app.use(express.json());
 
-interface NewBook {
-  title: string;
-  author: string;
+const MAX_TITLE_LENGTH = 120;
+
+function parseTitle(body: Record<string, unknown>): string | undefined {
+  const { title } = body;
+  if (typeof title !== "string") {
+    return undefined;
+  }
+  const trimmed = title.trim();
+  if (trimmed.length === 0 || trimmed.length > MAX_TITLE_LENGTH) {
+    return undefined;
+  }
+  return trimmed;
 }
 
 app.post("/books", (req, res) => {
-  const body = req.body as NewBook;
-  res.json(storage.addBook(body.title, body.author));
+  const body = req.body as Record<string, unknown>;
+  const title = parseTitle(body);
+  if (title === undefined) {
+    res.status(422).json({ detail: "Invalid title" });
+    return;
+  }
+  const author = typeof body.author === "string" ? body.author : "";
+  res.json(storage.addBook(title, author));
 });
 
 app.get("/books", (req, res) => {
