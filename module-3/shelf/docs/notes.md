@@ -6,10 +6,48 @@ In each section, answer the readiness-criteria points of the task that require a
 ## 3.1 Rules
 
 - What the agent logged with before CLAUDE.md:
+
+before/after:
+`log.[method]`
+
 - What it logs with after, and why:
+
+before:
+
+`"book added"`
+
+after:
+
+`"book.added"`
+
 - How the agent ran the tests, before and after CLAUDE.local.md:
+
+before:
+`npx vitest run`
+
+after:
+
+`npx vitest run --bail 1`
+
+after:
+
 - Which rules live where, and why:
+
+`CLAUDE.md`
+
+Project rules
+
+`CLAUDE.local.md`
+
+My project-local rules
+
+- Run tests like this: npx vitest run --bail 1
+
+`~/.claude/CLAUDE.md`
+
 - Which stack you chose and why:
+
+TypeScript (strict), Node.js 20+, Express 5, Vitest + supertest, ESLint.
 
 ## 3.2 Debugging and tests
 

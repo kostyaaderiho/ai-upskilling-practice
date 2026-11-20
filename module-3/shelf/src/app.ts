@@ -1,7 +1,10 @@
 import express from "express";
 
+import { getLogger } from "./log";
 import { percent } from "./stats";
 import * as storage from "./storage";
+
+const log = getLogger("app");
 
 export const app = express();
 app.use(express.json());
@@ -29,13 +32,19 @@ app.get("/books/recent", (_req, res) => {
 app.post("/books/:id/read", (req, res) => {
   const id = Number(req.params.id);
   try {
-    res.json(storage.markRead(id));
+    const book = storage.markRead(id);
+    log.info("book.read", { id });
+    res.json(book);
   } catch (err) {
     if (err instanceof storage.BookNotFoundError) {
-      console.log("book not found", id);
+      log.warn("book.read.not_found", { id });
       res.status(404).json({ detail: "Book not found" });
       return;
     }
+    log.error("book.read.failed", {
+      id,
+      error: err instanceof Error ? err.message : String(err),
+    });
     throw err;
   }
 });
