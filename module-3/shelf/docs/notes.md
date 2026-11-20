@@ -115,3 +115,88 @@ nothing broke
 The decisions note is a separate file, docs/B-7-decisions.md.
 
 - What /self-review said, and what you changed after it:
+
+Nothing was changed. npm run check passes (39 tests in 4 files).
+
+1–2. Violations of CLAUDE.md and the constitution
+
+Where: src/server.ts:7
+Rule: Constitution I: bind to 127.0.0.
+Problem: app.listen(port) has no host, so it binds to all interfaces.
+──────────────────────────────────────
+Where: src/app.ts:10
+Rule: Errors are { detail }
+Problem: A malformed JSON body returns 400 text/html (I checked). There is no error middleware, and
+Express prints the stack to stderr, no
+────────────────────────────────────────
+Where: src/app.ts:61, 80, 100
+Rule: Errors are { detail }
+Problem: throw err on unexpected errorHTML 500.
+────────────────────────────────────────
+Where: src/storage.ts:46-50 and src/ap
+Rule: Constitution II: no change without a test
+Problem: paginate and GET /books have id 11 (checked with 12 books), which is
+open bug B-3.
+────────────────────────────────────────
+Where: src/app.ts:84-102 and src/app.t
+Rule: Constitution II
+Problem: POST /books/:id/read and GET
+────────────────────────────────────────
+Where: tests/api.test.ts and tests/val
+Rule: Tests are <module>.test.ts
+Problem: There is no src/api.ts or srcin app.ts. This is minor.
+────────────────────────────────────────
+Where: .specify/memory/constitution.md
+Rule: The report says "temporary; remove before committing"
+Problem: It is committed with that blo
+
+- Clean: there is no console.\*, any orse and dot-separated. There are no newdependencies. strict is on.
+- Test-first: I can't prove it from the and tests together, so a red run isn't visible.
+
+3. Acceptance scenarios in specs/001-library-export/spec.md  
+   None of the 8 has a test. Nothing in src/ or tests/ mentions export, and all FR-001–012, SC-001–005 and the 6 edge cases are equally uncoveredr each scenario:
+
+┌───────────────────────────┬───────────┐
+│ Scenario │ Existing test │ Planned in tasks.md │
+├───────────────────────────┼───────────┤
+│ US1-1 JSON, three books │ none │ T003a, T004a │
+├───────────────────────────┼───────────┤
+│ US1-2 JSON, empty library │ none │ T003b, T004b │
+├───────────────────────────┼───────────┤
+│ US1-3 books unchanged │ none │ T003d, T004d │
+├───────────────────────────┼───────────┤
+│ US2-1 CSV header and rows │ none │ T009a, T010a │
+├───────────────────────────┼───────────┤
+│ US2-2 CSV, empty library │ none │ T009b, T010b │
+├───────────────────────────┼───────────┤
+│ US2-3 CSV escaping │ none │ T009c │
+├───────────────────────────┼───────────┤
+│ US3-1 xml gives 422 │ none │ T016 │
+├───────────────────────────┼───────────┤
+│ US3-2 no format gives 422 │ none │ T016 │
+└───────────────────────────┴───────────┘
+
+4. What a colleague gets from .claude/
+
+- Gets
+  - The /new-endpoint command.
+  - The PreToolUse hook (block-env.mjsson). It needs node on the PATH.
+  - Nine speckit-\* skills, plus the tracked .specify/ templates, scripts and constitution.
+- Not committed yet: /self-review, .gitaged only, so a clone gets none ofthem.
+- Hook limits: it matches the exact na\* pass.
+- Has to set up
+  - npm install and Node 20+.
+  - Their own .env. There is no .env.example.
+  - CLAUDE.local.md is ignored, so the1.
+  - Their user-level ~/.claude/CLAUDE.md. - MCP servers and logins. There is n/agents/.
+  - .specify/feature.json is gitignored. Until they set SPECIFY_FEATURE_DIRECTORY=specs/001-lin and /speckit-tasks stop with "Featuredirectory not found" (common.sh:209-213).
+- Noise: a CodeMie analytics JSON withme is tracked indocs/codemie/analytics/. Two more sit untracked.
+- Doc drift
+  - CLAUDE.md doesn't mention the constitution.
+  - plan.md:42 still calls the constit. T022 doesn't cover that.
+  - docs/notes.md §3.3 names specs/001-export-library and "three NEEDS CLARIFICATION markers", but spec.md has none.
+  - docs/notes.md §3.5 and "Final task" are blank.
+
+5.
+
+Not ready: the server binds to all interfaces, errors outside the handled cases aren't { detail }, B-3 is open and paginate, GET /books, POSTstats are untested, the export has notests yet (0/8 scenarios), self-review.md, .gitignore and tasks.md are staged but not committed, constitution.md ships its temporary reon Check is stale, and an analytics JSON with a personal email in its name is tracked.
