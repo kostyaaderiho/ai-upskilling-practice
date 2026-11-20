@@ -81,7 +81,12 @@ Propose a solution with no new dependencies. Don't change any code yet.
 ## 3.3 Spec Kit
 
 - Order of Spec Kit commands and the file each step created:
+  /speckit-constitution → .specify/memory/constitution.md; /speckit-specify →
+  specs/001-export-library/spec.md; /speckit-clarify → the same spec.md, with the
+  questions answered; /speckit-plan → plan.md; /speckit-tasks → tasks.md. No code.
 - Which NEEDS CLARIFICATION markers there were and what you answered:
+  three — what is exported, the empty CSV, authorisation. Answered as above; declaring
+  filters out of scope removed two tasks from tasks.md.
 
 ## 3.4 Agent mode
 
